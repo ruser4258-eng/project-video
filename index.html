@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Project Video</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #0f172a;
+            color: white;
+
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            padding: 45px 30px;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+            font-size: 32px;
+        }
+
+        p {
+            color: #cbd5e1;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .loader {
+            width: 45px;
+            height: 45px;
+
+            margin: 30px auto;
+
+            border: 4px solid #334155;
+            border-top: 4px solid white;
+
+            border-radius: 50%;
+
+            animation: spin 1s linear infinite;
+        }
+
+        .button {
+            display: inline-block;
+
+            margin-top: 20px;
+            padding: 13px 25px;
+
+            background: white;
+            color: #0f172a;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            border-radius: 8px;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Project Presentation</h1>
+
+        <p id="message">
+            The project explanation video is being prepared.
+        </p>
+
+        <div class="loader" id="loader"></div>
+
+        <a
+            id="videoButton"
+            class="button"
+            href="#"
+            target="_blank"
+            style="display: none;"
+        >
+            Watch Project Video
+        </a>
+
+    </div>
+
+
+    <script>
+
+        /*
+        =====================================================
+        CHANGE ONLY THIS URL WHEN YOUR VIDEO IS READY
+        =====================================================
+        */
+
+        const VIDEO_URL =
+            "https://www.youtube.com/watch?v=YOUR_VIDEO_ID";
+
+
+        /*
+        =====================================================
+        DO NOT CHANGE BELOW THIS LINE
+        =====================================================
+        */
+
+        const message =
+            document.getElementById("message");
+
+        const loader =
+            document.getElementById("loader");
+
+        const videoButton =
+            document.getElementById("videoButton");
+
+
+        const videoReady =
+            !VIDEO_URL.includes("YOUR_VIDEO_ID");
+
+
+        if (videoReady) {
+
+            /*
+             * Video exists.
+             * Redirect visitor directly to YouTube.
+             */
+
+            window.location.replace(VIDEO_URL);
+
+        } else {
+
+            /*
+             * Video isn't ready yet.
+             */
+
+            loader.style.display = "none";
+
+            message.innerHTML =
+                "The project video is currently being prepared.<br><br>" +
+                "Please check back soon.";
+
+        }
+
+    </script>
+
+</body>
+</html>
